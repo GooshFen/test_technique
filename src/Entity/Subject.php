@@ -9,7 +9,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: SubjectRepository::class)]
-#[ApiResource]
+#[ApiResource()]
 class Subject
 {
     #[ORM\Id]

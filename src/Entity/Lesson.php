@@ -2,14 +2,25 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\LessonRepository;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use App\Controller\LessonController;
 use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: LessonRepository::class)]
-#[ApiResource]
+#[ApiResource( 
+    itemOperations: [
+    'get' => [
+        'method' => 'GET',
+        'path' => '/subject_lesson/{id}',
+        'controller' => LessonController::class,
+    ],
+])
+]
 class Lesson
 {
     #[ORM\Id]
